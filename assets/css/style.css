@@ -1,0 +1,168 @@
+/* Importando a fonte HyliaSerif */
+@font-face {
+    font-family: 'HyliaSerif';
+    src: url('../fonts/hyliaSerif.otf') format('opentype');
+}
+
+/* Vídeo de fundo */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(40%);
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.navbar-brand {
+    margin-left: 20px;
+}
+
+.navbar-brand img {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.navbar-brand img:hover {
+    opacity: 0.7;
+}
+
+.navbar-nav {
+    margin: 0% 21%;
+    text-align: center;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 18px;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f5dc7b !important;
+}
+
+/* Container principal */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content-box {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    max-width: 300px;
+}
+
+.content-box h1 {
+    font-size: 28px;
+}
+
+/* Botão de iniciar aventura */
+.btn-start {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    border-radius: 50px;
+    transition: background 0.5s, color 0.3s;
+}
+
+.btn-start:hover {
+    background-color: white;
+    color: black;
+}
+
+
+/* Seções de conteúdo */
+.text-center h2 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+section {
+    padding: 40px 0;
+}
+
+section img {
+    width: 250px;
+    height: auto;
+}
+
+.row {
+    margin-bottom: 30px;
+}
+
+/* Estilo do Slider */
+.carousel-inner img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+section {
+    margin: 10% 15%;
+    padding: 1rem;
+}
+#historia {
+    background-color: white;
+    border: black solid;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin: 0 0;
+    color: black;
+    padding: 5% 10%;
+}
+
+#guia {
+    margin: 0 0;
+    padding: 5% 12% 0% 12%;
+}
+
+#runas {
+    margin: 0 0;
+    padding: 5% 10% 5% 10%;
+}
+#personagens {
+    margin: 0 0;
+    padding: 5% 10%;
+    background-color: black;
+    color: white;
+}
+
+#personagens img {
+    height: 500px;
+    width: auto;
+}
+
+#mapa {
+    margin: 0 0;
+    padding: 5% 10%;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
