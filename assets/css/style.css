@@ -36,7 +36,7 @@
 }
 
 .navbar-nav {
-    margin: 0% 21%;
+    margin: 0% 28%;
     text-align: center;
 }
 
@@ -130,13 +130,32 @@ section {
 
 #guia {
     margin: 0 0;
-    padding: 5% 12% 0% 12%;
+    padding: 3% 10% 5% 12%;
+    opacity: 1;
+    background: url('../img/sheikah screen 2.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.videoGuia {
+    width: 70%;
+    margin-left: 13%;
 }
 
 #runas {
     margin: 0 0;
-    padding: 5% 10% 5% 10%;
+    padding: 2% 10% 5% 10%;
+    background: url('../img/sheikah screen 2.jpg') no-repeat center center;
+    background-size: cover;
 }
+
+#runas img {
+    filter: brightness(50%);
+}
+
+.carouselPag {
+    color: white;
+}
+
 #personagens {
     margin: 0 0;
     padding: 5% 10%;
@@ -152,6 +171,8 @@ section {
 #mapa {
     margin: 0 0;
     padding: 5% 10%;
+    background: url('../img/sheikah screen 3.jpg') no-repeat center center;
+    background-size: cover;
 }
 
 /* Footer */
