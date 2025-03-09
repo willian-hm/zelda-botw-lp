@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         /* Estilo do efeito de Blur (Neblina) */
         .blur-effect {
             position: fixed;
@@ -25,20 +27,28 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.8); /* Sombra com neblina */
-            filter: blur(0px); /* Começa sem blur */
-            opacity: 0; /* Começa invisível */
-            transition: all 2s ease-in-out; /* Suaviza a transição */
-            z-index: 9999; /* Garante que fique por cima de tudo */
+            background: rgba(0, 0, 0, 0.8);
+            /* Sombra com neblina */
+            filter: blur(0px);
+            /* Começa sem blur */
+            opacity: 0;
+            /* Começa invisível */
+            transition: all 2s ease-in-out;
+            /* Suaviza a transição */
+            z-index: 9999;
+            /* Garante que fique por cima de tudo */
             display: none;
         }
 
         .blur-active {
-            opacity: 1; /* Fica visível */
-            filter: blur(30px); /* Aplica o efeito de desfocagem */
+            opacity: 1;
+            /* Fica visível */
+            filter: blur(30px);
+            /* Aplica o efeito de desfocagem */
         }
     </style>
 </head>
+
 <body>
     <!-- Vídeo de fundo -->
     <video autoplay loop muted class="video-background">
@@ -90,7 +100,8 @@
     </footer>
 
     <!-- Scripts -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
