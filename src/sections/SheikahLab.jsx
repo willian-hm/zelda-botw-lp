@@ -1,26 +1,66 @@
 import { useState } from 'react'
 import { EXTRA_RUNES, LAB_RUNES } from '../data/runes'
-import sheikahPanel from '../assets/media/sheikah-panel-1600.webp'
 import { audio } from '../lib/audio'
-import { useStore } from '../lib/store'
+import { toast } from '../lib/store'
 import AmbientCanvas from '../components/AmbientCanvas'
 import RuneCanvas from '../components/RuneCanvas'
 import KorokSecret from '../components/KorokSecret'
-import { PlayIcon, RuneIcon, SheikahEyeIcon } from '../components/Icons'
+import { RuneIcon, SheikahEyeIcon } from '../components/Icons'
 import './SheikahLab.css'
+
+function BlueprintGraphic({ id, active }) {
+  if (id === 'camera') {
+    return (
+      <svg viewBox="0 0 320 180" className={`blueprint-svg ${active ? 'is-triggered' : ''}`} aria-hidden="true">
+        <rect x="24" y="20" width="272" height="140" rx="6" fill="none" stroke="rgba(73,197,206,0.35)" strokeWidth="1.2" />
+        <path d="M40 48V32h18M280 48V32h-18M40 132v16h18M280 132v16h-18" stroke="#49C5CE" strokeWidth="2.2" fill="none" />
+        <circle cx="160" cy="90" r="34" fill="none" stroke="#49C5CE" strokeWidth="1.5" strokeDasharray="5 4" />
+        <circle cx="160" cy="90" r="14" fill="rgba(73,197,206,0.16)" stroke="#E6CF98" strokeWidth="1.6" />
+        <path d="M160 44v14M160 122v14M114 90h14M192 90h14" stroke="#49C5CE" strokeWidth="1.4" />
+      </svg>
+    )
+  }
+  if (id === 'relic') {
+    return (
+      <svg viewBox="0 0 320 180" className={`blueprint-svg ${active ? 'is-triggered' : ''}`} aria-hidden="true">
+        <circle cx="160" cy="90" r="62" fill="none" stroke="rgba(200,169,107,0.35)" strokeWidth="1.2" strokeDasharray="4 6" />
+        <circle cx="160" cy="90" r="42" fill="none" stroke="#C8A96B" strokeWidth="1.6" />
+        <polygon points="160,42 200,90 160,138 120,90" fill="rgba(200,169,107,0.14)" stroke="#E6CF98" strokeWidth="1.8" />
+        <circle cx="160" cy="90" r="7" fill="#49C5CE" />
+      </svg>
+    )
+  }
+  return (
+    <svg viewBox="0 0 320 180" className={`blueprint-svg ${active ? 'is-triggered' : ''}`} aria-hidden="true">
+      <path d="M52 128h216" stroke="rgba(124,228,255,0.28)" strokeWidth="1.4" />
+      <circle cx="102" cy="116" r="24" fill="none" stroke="#7CE4FF" strokeWidth="2.2" />
+      <circle cx="102" cy="116" r="9" fill="rgba(124,228,255,0.2)" stroke="#E6CF98" strokeWidth="1.5" />
+      <circle cx="222" cy="116" r="24" fill="none" stroke="#7CE4FF" strokeWidth="2.2" />
+      <circle cx="222" cy="116" r="9" fill="rgba(124,228,255,0.2)" stroke="#E6CF98" strokeWidth="1.5" />
+      <path d="M102 116L144 74h52l26 42M144 74l-14-18h28M174 74l-20 42h42" fill="none" stroke="#E6CF98" strokeWidth="2" strokeLinejoin="round" />
+      <path d="M56 76h38M44 90h30" stroke="#49C5CE" strokeWidth="1.6" strokeLinecap="round" opacity="0.7" />
+    </svg>
+  )
+}
 
 export default function SheikahLab() {
   const [selectedId, setSelectedId] = useState(LAB_RUNES[0].id)
-  const [showFieldClip, setShowFieldClip] = useState(false)
-  const [playingExtra, setPlayingExtra] = useState({})
-  const motion = useStore((s) => s.motion)
+  const [triggered, setTriggered] = useState({})
 
   const current = LAB_RUNES.find((r) => r.id === selectedId) || LAB_RUNES[0]
 
   const selectRune = (id) => {
     setSelectedId(id)
-    setShowFieldClip(false)
     audio.playSfx('sheikah')
+  }
+
+  const triggerExtra = (item) => {
+    audio.playSfx('sheikah')
+    setTriggered((prev) => ({ ...prev, [item.id]: true }))
+    toast(item.feedback, { tone: 'sheikah', title: item.name, duration: 2400 })
+    setTimeout(() => {
+      setTriggered((prev) => ({ ...prev, [item.id]: false }))
+    }, 650)
   }
 
   return (
@@ -30,12 +70,8 @@ export default function SheikahLab() {
       style={{ '--rune-accent': current.accent }}
       aria-labelledby="runas-titulo"
     >
-      {/* Subtle Sheikah topographic backdrop */}
-      <div
-        className="lab__bg"
-        style={{ backgroundImage: `url(${sheikahPanel})` }}
-        aria-hidden="true"
-      />
+      {/* Procedural geometric circuit grid (100% original CSS, zero external raster) */}
+      <div className="lab__bg" aria-hidden="true" />
       <AmbientCanvas mode="sheikah" density={0.55} />
 
       <div className="container lab__inner">
@@ -46,7 +82,7 @@ export default function SheikahLab() {
               Laboratório Sheikah
             </h2>
             <p className="lead">
-              Experimente as quatro runas essenciais diretamente nesta câmara interativa — compatível com mouse, toque e teclado.
+              Experimente as quatro runas essenciais diretamente nesta câmara de física interativa — compatível com mouse, toque e teclado.
             </p>
           </div>
           <div className="lab__korok">
@@ -67,7 +103,6 @@ export default function SheikahLab() {
                 className={`rune-tile ${rune.id === current.id ? 'is-active' : ''}`}
                 style={{ '--tile-accent': rune.accent }}
                 onClick={() => selectRune(rune.id)}
-                data-cursor="RUNA"
               >
                 <span className="rune-tile__glyph">
                   <RuneIcon id={rune.id} size={28} />
@@ -80,7 +115,7 @@ export default function SheikahLab() {
             ))}
           </div>
 
-          {/* Interactive Lab Stage + Briefing */}
+          {/* Interactive Lab Stage + Technical Briefing */}
           <div className="slate-stage">
             <div className="slate-brief">
               <div className="slate-brief__badge">
@@ -94,85 +129,48 @@ export default function SheikahLab() {
                 <p>{current.controls}</p>
               </div>
 
-              <button
-                type="button"
-                className="btn btn--sm slate-clip-toggle"
-                onClick={() => {
-                  audio.playSfx('select')
-                  setShowFieldClip((v) => !v)
-                }}
-              >
-                <PlayIcon size={14} />
-                <span>{showFieldClip ? 'Voltar ao Simulador' : 'Ver Registro em Jogo'}</span>
-              </button>
+              <dl className="slate-specs">
+                {current.specs.map((spec) => (
+                  <div key={spec.label}>
+                    <dt>{spec.label}</dt>
+                    <dd>{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
 
             <div className="slate-demo">
-              {showFieldClip ? (
-                <div className="rune-field-clip sheikah-frame">
-                  <video
-                    key={current.id}
-                    src={current.video}
-                    poster={current.poster}
-                    autoPlay={motion !== 'reduced'}
-                    loop
-                    muted
-                    playsInline
-                    controls
-                    aria-label={`Demonstração em jogo da runa ${current.name}`}
-                  />
-                </div>
-              ) : (
-                <RuneCanvas runeId={current.id} />
-              )}
+              <RuneCanvas runeId={current.id} />
             </div>
           </div>
         </div>
 
-        {/* Complementary Sheikah Slate Modules (Camera, Amiibo, Master Cycle Zero) */}
+        {/* Complementary Original Blueprint Modules */}
         <div className="extra-runes">
-          <p className="eyebrow">Módulos Complementares</p>
+          <p className="eyebrow">Módulos Complementares · Esquemáticos Originais</p>
           <div className="extra-runes__grid">
             {EXTRA_RUNES.map((item) => {
-              const isPlaying = !!playingExtra[item.id]
+              const isActive = !!triggered[item.id]
               return (
-                <article key={item.id} className="extra-rune-card">
-                  <div className="extra-rune-card__media">
-                    {item.video ? (
-                      isPlaying ? (
-                        <video
-                          src={item.video}
-                          poster={item.poster}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          aria-label={item.alt}
-                        />
-                      ) : (
-                        <button
-                          type="button"
-                          className="extra-poster"
-                          onClick={() => {
-                            audio.playSfx('select')
-                            setPlayingExtra((p) => ({ ...p, [item.id]: true }))
-                          }}
-                          aria-label={`Reproduzir demonstração de ${item.name}`}
-                        >
-                          <img src={item.poster} alt={item.alt} loading="lazy" decoding="async" />
-                          <span className="extra-poster__play" aria-hidden="true">
-                            <PlayIcon size={18} />
-                          </span>
-                        </button>
-                      )
-                    ) : (
-                      <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
-                    )}
+                <article
+                  key={item.id}
+                  className="extra-rune-card"
+                  style={{ '--extra-accent': item.accent }}
+                >
+                  <div className="extra-rune-card__media extra-rune-card__blueprint">
+                    <BlueprintGraphic id={item.id} active={isActive} />
                   </div>
                   <div className="extra-rune-card__body">
                     <span>{item.tag}</span>
                     <h3 className="display">{item.name}</h3>
                     <p>{item.description}</p>
+                    <button
+                      type="button"
+                      className="btn btn--sm extra-rune-card__btn"
+                      onClick={() => triggerExtra(item)}
+                    >
+                      {item.actionLabel}
+                    </button>
                   </div>
                 </article>
               )

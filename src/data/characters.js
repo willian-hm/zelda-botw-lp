@@ -1,17 +1,17 @@
 import link640 from '../assets/media/char-link-640.webp'
-import link1200 from '../assets/media/char-link-1200.webp'
+import link1080 from '../assets/media/char-link-1080.webp'
 import zelda640 from '../assets/media/char-zelda-640.webp'
-import zelda1200 from '../assets/media/char-zelda-1200.webp'
+import zelda1080 from '../assets/media/char-zelda-1080.webp'
 import mipha640 from '../assets/media/char-mipha-640.webp'
-import mipha1200 from '../assets/media/char-mipha-1200.webp'
+import mipha1080 from '../assets/media/char-mipha-1080.webp'
 import revali640 from '../assets/media/char-revali-640.webp'
-import revali1200 from '../assets/media/char-revali-1200.webp'
+import revali1080 from '../assets/media/char-revali-1080.webp'
 import daruk640 from '../assets/media/char-daruk-640.webp'
-import daruk1200 from '../assets/media/char-daruk-1200.webp'
+import daruk1080 from '../assets/media/char-daruk-1080.webp'
 import urbosa640 from '../assets/media/char-urbosa-640.webp'
-import urbosa1200 from '../assets/media/char-urbosa-1200.webp'
+import urbosa1080 from '../assets/media/char-urbosa-1080.webp'
 import ganon640 from '../assets/media/char-ganon-640.webp'
-import ganon1200 from '../assets/media/char-ganon-1200.webp'
+import ganon1080 from '../assets/media/char-ganon-1080.webp'
 
 export const CHARACTERS = [
   {
@@ -33,8 +33,8 @@ export const CHARACTERS = [
     },
     image: {
       src: link640,
-      srcSet: `${link640} 640w, ${link1200} 1200w`,
-      alt: 'Link, o herói de Hyrule pronto para a aventura',
+      srcSet: `${link640} 640w, ${link1080} 1080w`,
+      alt: 'Ilustração conceitual original de um jovem aventureiro encapuzado com espada às costas em meio a folhas ao vento',
     },
   },
   {
@@ -56,8 +56,8 @@ export const CHARACTERS = [
     },
     image: {
       src: zelda640,
-      srcSet: `${zelda640} 640w, ${zelda1200} 1200w`,
-      alt: 'Princesa Zelda de Hyrule com vestes azuis dos Campeões',
+      srcSet: `${zelda640} 640w, ${zelda1080} 1080w`,
+      alt: 'Ilustração original de luz dourada sagrada descendo sobre arcos ancestrais e flores silvestres',
     },
   },
   {
@@ -79,8 +79,8 @@ export const CHARACTERS = [
     },
     image: {
       src: mipha640,
-      srcSet: `${mipha640} 640w, ${mipha1200} 1200w`,
-      alt: 'Mipha, Princesa Zora e Campeã da Besta Divina Vah Ruta',
+      srcSet: `${mipha640} 640w, ${mipha1080} 1080w`,
+      alt: 'Ilustração original do colosso das águas Vah Ruta sob chuva serena e cachoeiras de Lanayru',
     },
   },
   {
@@ -102,8 +102,8 @@ export const CHARACTERS = [
     },
     image: {
       src: revali640,
-      srcSet: `${revali640} 640w, ${revali1200} 1200w`,
-      alt: 'Revali, Campeão Rito com seu Grande Arco da Águia',
+      srcSet: `${revali640} 640w, ${revali1080} 1080w`,
+      alt: 'Ilustração original do colosso alado Vah Medoh planando sobre picos nevados e correntes de vento',
     },
   },
   {
@@ -125,8 +125,8 @@ export const CHARACTERS = [
     },
     image: {
       src: daruk640,
-      srcSet: `${daruk640} 640w, ${daruk1200} 1200w`,
-      alt: 'Daruk, o imponente Campeão Goron da Montanha da Morte',
+      srcSet: `${daruk640} 640w, ${daruk1080} 1080w`,
+      alt: 'Ilustração conceitual original de um guerreiro vulcânico de pele rochosa com grande martelo de obsidiana',
     },
   },
   {
@@ -148,8 +148,8 @@ export const CHARACTERS = [
     },
     image: {
       src: urbosa640,
-      srcSet: `${urbosa640} 640w, ${urbosa1200} 1200w`,
-      alt: 'Urbosa, líder e Campeã Gerudo empunhando sua cimitarra e escudo',
+      srcSet: `${urbosa640} 640w, ${urbosa1080} 1080w`,
+      alt: 'Ilustração original do colosso do deserto Vah Naboris sob tempestade de areia e relâmpagos dourados',
     },
   },
   {
@@ -171,8 +171,8 @@ export const CHARACTERS = [
     },
     image: {
       src: ganon640,
-      srcSet: `${ganon640} 640w, ${ganon1200} 1200w`,
-      alt: 'Calamidade Ganon envolvendo o Castelo de Hyrule em espirais de Malícia vermelha',
+      srcSet: `${ganon640} 640w, ${ganon1080} 1080w`,
+      alt: 'Ilustração original da cidadela sombria envolta por espirais carmesim de malícia sob céu tempestuoso',
     },
   },
 ]

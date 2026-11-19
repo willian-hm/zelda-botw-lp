@@ -1,10 +1,10 @@
-import scene1 from '../assets/media/scene1-1600.webp'
-import scene2 from '../assets/media/scene2-1600.webp'
-import scene3 from '../assets/media/scene3-1600.webp'
-import scene4 from '../assets/media/scene4-1600.webp'
-import scene5 from '../assets/media/scene5-1600.webp'
-import scene6 from '../assets/media/scene6-1600.webp'
-import linkBow from '../assets/media/link-bow-386.webp'
+import meadow from '../assets/media/vista-meadow-1600.webp'
+import ruins from '../assets/media/vista-ruins-1600.webp'
+import heroVista from '../assets/media/hero-poster.jpg'
+import awakening from '../assets/media/ch-awakening-1600.webp'
+import destiny from '../assets/media/ch-destiny-1600.webp'
+import beastWind from '../assets/media/beast-wind-1080.webp'
+import heroPortrait from '../assets/media/char-link-640.webp'
 
 export const GUIDE_TABS = [
   { id: 'exploracao', label: 'Exploração', numeral: '01' },
@@ -22,8 +22,8 @@ export const EXPLORATION_ITEMS = [
       'Quase toda superfície em Hyrule pode ser escalada. Observe a inclinação da encosta, planeje pequenas saliências para recuperar o fôlego e evite escalar sob chuva forte.',
     staminaCost: 65,
     tip: 'Pular durante a escalada acelera a subida, mas consome muito mais vigor — reserve o salto para o último trecho antes do topo.',
-    image: scene3,
-    alt: 'Link no topo de um penhasco observando as montanhas e planícies de Hyrule',
+    image: heroVista,
+    alt: 'Viajante observando vales verdes e montanhas do alto de um penhasco ao amanhecer',
   },
   {
     id: 'paraglider',
@@ -33,8 +33,8 @@ export const EXPLORATION_ITEMS = [
       'Dos cumes mais altos às torres Sheikah, o paraglider transforma altitude em alcance. Fogo na relva gera correntes ascendentes instantâneas para ganhar altura em segundos.',
     staminaCost: 42,
     tip: 'Atirar uma flecha de fogo na grama seca antes de saltar cria uma térmica improvisada mesmo longe de ventos naturais.',
-    image: scene1,
-    alt: 'Campos abertos de Hyrule com uma Silent Princess em primeiro plano',
+    image: meadow,
+    alt: 'Campos abertos iluminados com uma flor silvestre azul brilhante em primeiro plano',
   },
   {
     id: 'clima',
@@ -44,8 +44,8 @@ export const EXPLORATION_ITEMS = [
       'Tempestades elétricas atraem armas, escudos e arcos metálicos. O frio das montanhas e o calor extremo do deserto exigem roupas adequadas ou refeições preparadas.',
     staminaCost: 28,
     tip: 'Durante tempestades, equipe armas de madeira ou ancestrais — ou arremesse uma arma metálica perto de inimigos no instante do raio.',
-    image: scene4,
-    alt: 'Horizonte de Hyrule ao entardecer com nuvens e ruínas antigas',
+    image: beastWind,
+    alt: 'Picos nevados e céus abertos com ventos cortantes nas altitudes de Hyrule',
   },
 ]
 
@@ -77,10 +77,10 @@ export const COMBAT_TACTICS = [
 ]
 
 export const COMBAT_VISUAL = {
-  hero: linkBow,
-  scene: scene5,
-  altHero: 'Link mirando com arco em postura de combate',
-  altScene: 'Ruínas antigas de Hyrule sob céu luminoso',
+  hero: heroPortrait,
+  scene: ruins,
+  altHero: 'Ilustração conceitual original do aventureiro empunhando espada',
+  altScene: 'Ruínas antigas cobertas de musgo sob luz solar',
 }
 
 export const INGREDIENTS = [
@@ -261,8 +261,8 @@ export const DISCOVERIES = [
     count: '120 desafios',
     description:
       'Espalhados por todo o reino, testam lógica, combate e domínio das runas Sheikah. Cada Orbe Espiritual fortalece o coração ou o vigor de Link.',
-    image: scene2,
-    alt: 'Ruínas antigas rodeadas por flores brancas sob luz solar',
+    image: awakening,
+    alt: 'Interior de santuário ancestral iluminado por runas azuis',
   },
   {
     id: 'koroks',
@@ -270,8 +270,8 @@ export const DISCOVERIES = [
     count: 'Escondidos por todo lado',
     description:
       'Círculos incompletos de pedras, cata-ventos solitários e folhas brilhantes escondem pequenos espíritos da floresta. Olhe com atenção — há 7 deles escondidos neste próprio site.',
-    image: scene6,
-    alt: 'Clareira arborizada de Hyrule repleta de ruínas e vegetação',
+    image: ruins,
+    alt: 'Clareira arborizada repleta de ruínas cobertas de musgo e flores',
     linksToKoroks: true,
   },
   {
@@ -280,13 +280,13 @@ export const DISCOVERIES = [
     count: 'Fragmentos de há 100 anos',
     description:
       'Fotografias preservadas na Pedra Sheikah revelam cenários exatos do passado. Reencontrar cada lugar devolve a Link a verdade sobre Zelda e os Campeões.',
-    image: scene1,
-    alt: 'Vale verdejante de Hyrule com o Castelo ao horizonte',
+    image: destiny,
+    alt: 'Arcos antigos iluminados por raios dourados ao amanhecer',
   },
 ]
 
 export const GUIDE_VIDEO = {
   youtubeId: 'iJI34WIp6OA',
-  title: 'Guia em Vídeo — Sobrevivência e Exploração em Breath of the Wild',
-  poster: scene1,
+  title: 'Guia em Vídeo no YouTube — Sobrevivência e Exploração em Breath of the Wild',
+  poster: meadow,
 }

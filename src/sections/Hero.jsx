@@ -263,7 +263,7 @@ export default function Hero() {
       {/* Foreground editorial content */}
       <div className="hero__content container">
         <div className="hero__top-copy">
-          <p className="eyebrow hero__eyebrow">The Legend of Zelda · Breath of the Wild</p>
+          <p className="eyebrow hero__eyebrow">Tributo Interativo · Breath of the Wild</p>
           <h1 className="visually-hidden">Hyrule — The Wild Awaits</h1>
         </div>
 

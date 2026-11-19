@@ -4,13 +4,6 @@
    experience lives here. Components consume tokens, never raw values.
    ========================================================================= */
 
-@font-face {
-  font-family: 'Hylia Serif';
-  src: url('../assets/fonts/hylia-serif.woff2') format('woff2');
-  font-display: swap;
-  font-weight: 400;
-}
-
 :root {
   /* ---- Core palette ---------------------------------------------------- */
   --c-night: #101b1b;
@@ -59,8 +52,8 @@
   --line: rgba(233, 228, 213, 0.16);
   --surface: rgba(233, 228, 213, 0.04);
 
-  /* ---- Typography ----------------------------------------------------- */
-  --font-display: 'Hylia Serif', 'Cormorant Garamond', Georgia, serif;
+  /* ---- Typography (100% SIL Open Font License) ------------------------ */
+  --font-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
   --font-editorial: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-ui: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 

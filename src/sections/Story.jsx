@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { CHAPTERS } from '../data/story'
 import { gsap, ScrollTrigger, scrollToTarget, useGSAP } from '../lib/gsap'
 import { audio } from '../lib/audio'
@@ -9,29 +9,10 @@ import './Story.css'
 
 export default function Story() {
   const sectionRef = useRef(null)
-  const runVideoRef = useRef(null)
   const motion = useStore((s) => s.motion)
 
   const [activeChapter, setActiveChapter] = useState(CHAPTERS[0].id)
   const [activeBeast, setActiveBeast] = useState(0)
-
-  // Pause Chapter I ambient clip when offscreen
-  useEffect(() => {
-    const vid = runVideoRef.current
-    if (!vid || motion === 'reduced') return
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          vid.play().catch(() => {})
-        } else {
-          vid.pause()
-        }
-      },
-      { threshold: 0.15 },
-    )
-    io.observe(vid)
-    return () => io.disconnect()
-  }, [motion])
 
   useGSAP(
     () => {
@@ -50,8 +31,7 @@ export default function Story() {
 
         if (motion === 'reduced') return
 
-        // Simulated camera motion & parallax on media (skip Chapter III so the 4 Divine Beasts
-        // panel overlay stays 100% pixel-aligned with the 4 vertical artwork slices!)
+        // Smooth camera parallax on single-frame story chapters
         const media = card.querySelector('.story-chapter__media-img')
         if (media && id !== 'campeoes') {
           gsap.fromTo(
@@ -88,13 +68,12 @@ export default function Story() {
           })
         }
 
-        // Malice horizon pulse when entering Calamidade
         if (id === 'calamidade') {
           const veil = card.querySelector('.calamity-veil')
           if (veil) {
             gsap.fromTo(
               veil,
-              { opacity: 0.15 },
+              { opacity: 0.25 },
               {
                 opacity: 1,
                 ease: 'none',
@@ -126,10 +105,8 @@ export default function Story() {
       className={`story story--mood-${activeChapter}`}
       aria-labelledby="historia-titulo"
     >
-      {/* Smooth contextual background veil */}
       <div className="story__backdrop" aria-hidden="true" />
 
-      {/* Section opener + sticky direct chapter navigator */}
       <div className="story__intro container">
         <div className="section-head">
           <p className="eyebrow">Crônicas de Hyrule</p>
@@ -137,7 +114,7 @@ export default function Story() {
             Cem anos entre a queda e o despertar
           </h2>
           <p className="lead">
-            Role para percorrer os quatro atos de Breath of the Wild — ou salte diretamente para qualquer capítulo a qualquer momento.
+            Role para percorrer os quatro atos da jornada — ou salte diretamente para qualquer capítulo a qualquer momento.
           </p>
         </div>
       </div>
@@ -159,7 +136,6 @@ export default function Story() {
         </div>
       </nav>
 
-      {/* Four visually distinct cinematic chapters */}
       <div className="story__chapters">
         {CHAPTERS.map((ch) => {
           const isCalamity = ch.id === 'calamidade'
@@ -174,7 +150,6 @@ export default function Story() {
               data-chapter={ch.id}
               className={`story-chapter story-chapter--${ch.atmosphere}`}
             >
-              {/* Chapter-specific atmosphere layer */}
               {isCalamity && (
                 <div className="calamity-veil" aria-hidden="true">
                   <AmbientCanvas mode="malice" density={0.9} />
@@ -188,7 +163,6 @@ export default function Story() {
               )}
 
               <div className={`story-chapter__grid container ${isChampions || isDestiny ? 'story-chapter__grid--wide' : ''}`}>
-                {/* Copy column (sticky on tall desktop layouts) */}
                 <div className="story-chapter__copy">
                   <span className="story-chapter__ghost-num display" aria-hidden="true">
                     {ch.numeral}
@@ -215,29 +189,17 @@ export default function Story() {
                   )}
                 </div>
 
-                {/* Visual composition column */}
+                {/* Visual column */}
                 <div className="story-chapter__visual">
-                  <figure
-                    className={`story-frame ${isCalamity ? 'story-frame--malice story-frame--wide21' : ''} ${isChampions ? 'story-frame--champions story-frame--wide21' : ''}`}
-                  >
-                    <img
-                      src={ch.media.src}
-                      srcSet={ch.media.srcSet}
-                      sizes="(max-width: 960px) 100vw, 58vw"
-                      alt={ch.media.alt}
-                      loading="lazy"
-                      decoding="async"
-                      className="story-chapter__media-img"
-                    />
-
-                    {/* Chapter III pixel-aligned clickable 4-column Divine Beasts overlay */}
-                    {isChampions && ch.beasts && (
-                      <div className="beasts-overlay" role="group" aria-label="Selecionar Besta Divina na ilustração">
+                  {isChampions && ch.beasts ? (
+                    <>
+                      {/* 4 Separate Original Divine Beast Illustrations (impossible to misalign!) */}
+                      <div className="beasts-quad" role="group" aria-label="As quatro Bestas Divinas">
                         {ch.beasts.map((b, idx) => (
                           <button
                             key={b.name}
                             type="button"
-                            className={`beasts-overlay__slice ${activeBeast === idx ? 'is-focused' : ''}`}
+                            className={`beast-panel ${activeBeast === idx ? 'is-focused' : ''}`}
                             style={{ '--beast-color': b.color }}
                             aria-label={`Destacar ${b.name} (${b.champion})`}
                             aria-pressed={activeBeast === idx}
@@ -247,87 +209,83 @@ export default function Story() {
                               audio.playSfx('select')
                             }}
                           >
-                            <span className="beasts-overlay__tag">{b.name}</span>
+                            <img
+                              src={b.image}
+                              srcSet={b.srcSet}
+                              sizes="(max-width: 640px) 46vw, 18vw"
+                              alt={b.alt}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <span className="beast-panel__scrim" aria-hidden="true" />
+                            <span className="beast-panel__tag">{b.name}</span>
                           </button>
                         ))}
                       </div>
-                    )}
 
-                    {!isChampions && (
-                      <figcaption className="story-frame__caption">
-                        <span>{ch.subtitle}</span>
-                        <span className="story-frame__num">Ato {ch.numeral}</span>
-                      </figcaption>
-                    )}
-                  </figure>
+                      <div
+                        className="beast-spotlight"
+                        style={{ '--beast-color': ch.beasts[activeBeast].color }}
+                        aria-live="polite"
+                      >
+                        <span className="beast-spotlight__badge">
+                          {ch.beasts[activeBeast].name} · {ch.beasts[activeBeast].champion} ({ch.beasts[activeBeast].region})
+                        </span>
+                        <p>{ch.beasts[activeBeast].summary}</p>
+                      </div>
 
-                  {/* Chapter III live Divine Beast note */}
-                  {isChampions && ch.beasts && (
-                    <div
-                      className="beast-spotlight"
-                      style={{ '--beast-color': ch.beasts[activeBeast].color }}
-                      aria-live="polite"
-                    >
-                      <span className="beast-spotlight__badge">
-                        {ch.beasts[activeBeast].name} · {ch.beasts[activeBeast].champion} ({ch.beasts[activeBeast].region})
-                      </span>
-                      <p>{ch.beasts[activeBeast].summary}</p>
-                    </div>
-                  )}
-
-                  {/* Chapter I secondary atmospheric meadow-run inset */}
-                  {isAwakening && ch.media.video && (
-                    <div className="story-inset sheikah-frame">
-                      {motion === 'reduced' ? (
+                      <div className="beasts-grid" role="tablist" aria-label="Selecionar Besta Divina">
+                        {ch.beasts.map((b, idx) => (
+                          <button
+                            key={b.name}
+                            type="button"
+                            role="tab"
+                            aria-selected={activeBeast === idx}
+                            className={`beast-chip ${activeBeast === idx ? 'is-active' : ''}`}
+                            style={{ '--beast-color': b.color }}
+                            onMouseEnter={() => setActiveBeast(idx)}
+                            onClick={() => {
+                              setActiveBeast(idx)
+                              audio.playSfx('select')
+                            }}
+                          >
+                            <span className="beast-chip__dot" aria-hidden="true" />
+                            <span className="beast-chip__main">
+                              <strong>{b.name}</strong>
+                              <small>
+                                {b.champion} · {b.region}
+                              </small>
+                            </span>
+                            <span className="beast-chip__el">{b.element}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <figure className={`story-frame ${isCalamity ? 'story-frame--malice' : ''}`}>
                         <img
-                          src={ch.media.videoPoster}
-                          alt="Link correndo em direção ao amanhecer no Grande Platô"
+                          src={ch.media.src}
+                          srcSet={ch.media.srcSet}
+                          sizes="(max-width: 960px) 100vw, 58vw"
+                          alt={ch.media.alt}
                           loading="lazy"
+                          decoding="async"
+                          className="story-chapter__media-img"
                         />
-                      ) : (
-                        <video
-                          ref={runVideoRef}
-                          src={ch.media.video}
-                          poster={ch.media.videoPoster}
-                          muted
-                          loop
-                          playsInline
-                          preload="none"
-                          aria-label="Cena de Link correndo pelos campos ao despertar"
-                        />
-                      )}
-                      <span className="story-inset__label">Saída do Santuário · Luz da Manhã</span>
-                    </div>
-                  )}
+                        <figcaption className="story-frame__caption">
+                          <span>{ch.subtitle}</span>
+                          <span className="story-frame__num">Ato {ch.numeral}</span>
+                        </figcaption>
+                      </figure>
 
-                  {/* Chapter III interactive Divine Beasts selector */}
-                  {isChampions && ch.beasts && (
-                    <div className="beasts-grid" role="tablist" aria-label="As quatro Bestas Divinas">
-                      {ch.beasts.map((b, idx) => (
-                        <button
-                          key={b.name}
-                          type="button"
-                          role="tab"
-                          aria-selected={activeBeast === idx}
-                          className={`beast-chip ${activeBeast === idx ? 'is-active' : ''}`}
-                          style={{ '--beast-color': b.color }}
-                          onMouseEnter={() => setActiveBeast(idx)}
-                          onClick={() => {
-                            setActiveBeast(idx)
-                            audio.playSfx('select')
-                          }}
-                        >
-                          <span className="beast-chip__dot" aria-hidden="true" />
-                          <span className="beast-chip__main">
-                            <strong>{b.name}</strong>
-                            <small>
-                              {b.champion} · {b.region}
-                            </small>
-                          </span>
-                          <span className="beast-chip__el">{b.element}</span>
-                        </button>
-                      ))}
-                    </div>
+                      {isAwakening && ch.media.insetImage && (
+                        <div className="story-inset sheikah-frame">
+                          <img src={ch.media.insetImage} alt={ch.media.insetAlt} loading="lazy" decoding="async" />
+                          <span className="story-inset__label">Além do Santuário · Luz da Manhã</span>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

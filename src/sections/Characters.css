@@ -169,35 +169,37 @@
   color: var(--c-parchment-3);
 }
 
-/* Portrait */
+/* Editorial Artbook Framed Portrait */
 .char-portrait {
   position: relative;
   z-index: 2;
   display: grid;
   place-items: center;
-  min-height: 340px;
+  min-height: 360px;
 }
 
 .char-portrait__halo {
   position: absolute;
-  width: min(78%, 410px);
+  width: min(86%, 430px);
   aspect-ratio: 1;
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--char-accent) 40%, transparent);
-  background: radial-gradient(circle, color-mix(in srgb, var(--char-accent) 22%, transparent), transparent 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--char-accent) 24%, transparent), transparent 68%);
   box-shadow: 0 0 80px -20px var(--char-glow);
 }
 
 .char-portrait__img {
   position: relative;
-  max-height: clamp(320px, 50vh, 520px);
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.62));
+  width: min(100%, 370px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--char-accent) 55%, rgba(233, 228, 213, 0.25));
+  box-shadow: 0 32px 64px -20px rgba(0, 0, 0, 0.72), 0 0 42px -12px var(--char-glow);
 }
 
 .characters.is-malice .char-portrait__img {
-  filter: drop-shadow(0 22px 46px rgba(214, 34, 74, 0.55));
+  box-shadow: 0 30px 70px -16px rgba(214, 34, 74, 0.55), 0 0 0 1px rgba(224, 40, 84, 0.6);
 }
 
 /* Selector Rail */

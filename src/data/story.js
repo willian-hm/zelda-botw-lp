@@ -1,16 +1,21 @@
-import awakening960 from '../assets/media/ch-awakening-960.webp'
-import awakening1920 from '../assets/media/ch-awakening-1920.webp'
-import awakeningRunMp4 from '../assets/media/awakening-run.mp4'
-import awakeningRunPoster from '../assets/media/awakening-run.jpg'
+import awakening800 from '../assets/media/ch-awakening-800.webp'
+import awakening1600 from '../assets/media/ch-awakening-1600.webp'
+import meadow800 from '../assets/media/vista-meadow-800.webp'
 
-import calamity960 from '../assets/media/ch-calamity-960.webp'
-import calamity1920 from '../assets/media/ch-calamity-1920.webp'
+import calamity800 from '../assets/media/ch-calamity-800.webp'
+import calamity1600 from '../assets/media/ch-calamity-1600.webp'
 
-import champions960 from '../assets/media/ch-champions-960.webp'
-import champions1920 from '../assets/media/ch-champions-1920.webp'
+import beastWater640 from '../assets/media/beast-water-640.webp'
+import beastWater1080 from '../assets/media/beast-water-1080.webp'
+import beastFire640 from '../assets/media/beast-fire-640.webp'
+import beastFire1080 from '../assets/media/beast-fire-1080.webp'
+import beastWind640 from '../assets/media/beast-wind-640.webp'
+import beastWind1080 from '../assets/media/beast-wind-1080.webp'
+import beastLightning640 from '../assets/media/beast-lightning-640.webp'
+import beastLightning1080 from '../assets/media/beast-lightning-1080.webp'
 
-import destiny960 from '../assets/media/ch-destiny-960.webp'
-import destiny1920 from '../assets/media/ch-destiny-1920.webp'
+import destiny800 from '../assets/media/ch-destiny-800.webp'
+import destiny1600 from '../assets/media/ch-destiny-1600.webp'
 
 export const CHAPTERS = [
   {
@@ -25,11 +30,11 @@ export const CHAPTERS = [
       'No alto do Grande Platô, ruínas cobertas de musgo contam a história de uma civilização interrompida. O vento sopra livre pelas planícies, anunciando que a jornada recomeçou.',
     atmosphere: 'awakening',
     media: {
-      src: awakening960,
-      srcSet: `${awakening960} 960w, ${awakening1920} 1920w`,
-      alt: 'Link despertando no Santuário da Ressurreição iluminado pela luz azul Sheikah',
-      video: awakeningRunMp4,
-      videoPoster: awakeningRunPoster,
+      src: awakening800,
+      srcSet: `${awakening800} 800w, ${awakening1600} 1600w`,
+      alt: 'Ilustração original de um santuário de pedra coberto de musgo com runas azuis abrindo-se para o sol da manhã',
+      insetImage: meadow800,
+      insetAlt: 'Pradaria iluminada pelo sol da manhã além das ruínas antigas',
     },
     meta: [
       { label: 'Era', value: '100 anos depois' },
@@ -49,9 +54,9 @@ export const CHAPTERS = [
       'O Castelo de Hyrule caiu sob um céu escarlate. Os quatro Campeões tombaram dentro de suas Bestas, Link foi ferido à beira da morte e a Princesa Zelda conteve a Calamidade sozinha por cem anos.',
     atmosphere: 'calamity',
     media: {
-      src: calamity960,
-      srcSet: `${calamity960} 960w, ${calamity1920} 1920w`,
-      alt: 'Princesa Zelda observando o Castelo de Hyrule envolvido pela Calamidade Ganon sob um céu carmesim',
+      src: calamity800,
+      srcSet: `${calamity800} 800w, ${calamity1600} 1600w`,
+      alt: 'Ilustração original de uma cidadela envolta por espirais carmesim sob céu de tempestade observada de um penhasco',
     },
     meta: [
       { label: 'Ameaça', value: 'Malícia Ancestral' },
@@ -70,11 +75,6 @@ export const CHAPTERS = [
     detail:
       'Unidos além do tempo, Zora, Goron, Rito e Gerudo emprestam suas dádivas ao herói — prova de que o legado de Hyrule jamais se apagou.',
     atmosphere: 'champions',
-    media: {
-      src: champions960,
-      srcSet: `${champions960} 960w, ${champions1920} 1920w`,
-      alt: 'As quatro Bestas Divinas: Vah Ruta, Vah Rudania, Vah Medoh e Vah Naboris',
-    },
     beasts: [
       {
         name: 'Vah Ruta',
@@ -83,6 +83,9 @@ export const CHAPTERS = [
         element: 'Água',
         color: '#49C5CE',
         summary: 'Colosso anfíbio que despejava chuvas incessantes sobre o reservatório oriental de Lanayru.',
+        image: beastWater640,
+        srcSet: `${beastWater640} 640w, ${beastWater1080} 1080w`,
+        alt: 'Ilustração original de um colosso mecânico ancestral de pedra em forma de elefante sob chuva em lago montanhoso',
       },
       {
         name: 'Vah Rudania',
@@ -91,6 +94,9 @@ export const CHAPTERS = [
         element: 'Fogo',
         color: '#FF7A2F',
         summary: 'Colosso vulcânico que provocava erupções e chuvas de magma ao redor da Cidade Goron.',
+        image: beastFire640,
+        srcSet: `${beastFire640} 640w, ${beastFire1080} 1080w`,
+        alt: 'Ilustração original de um colosso mecânico ancestral em forma de salamandra escalando encosta vulcânica com lava',
       },
       {
         name: 'Vah Medoh',
@@ -99,6 +105,9 @@ export const CHAPTERS = [
         element: 'Vento',
         color: '#7EB6FF',
         summary: 'Fortaleza alada que dominava os céus gelados de Tabantha com barreiras de vento cortante.',
+        image: beastWind640,
+        srcSet: `${beastWind640} 640w, ${beastWind1080} 1080w`,
+        alt: 'Ilustração original de um colosso mecânico ancestral alado planando sobre picos nevados e nuvens iluminadas',
       },
       {
         name: 'Vah Naboris',
@@ -107,10 +116,13 @@ export const CHAPTERS = [
         element: 'Relâmpago',
         color: '#E6C25A',
         summary: 'Gigante das dunas envolto por tempestades de areia e descargas elétricas no Deserto Gerudo.',
+        image: beastLightning640,
+        srcSet: `${beastLightning640} 640w, ${beastLightning1080} 1080w`,
+        alt: 'Ilustração original de um colosso mecânico ancestral atravessando dunas sob raios dourados de tempestade',
       },
     ],
     meta: [
-      { label: 'Bestas Divinas', value: '4 Colossos Sheikah' },
+      { label: 'Bestas Divinas', value: '4 Colossos Ancestrais' },
       { label: 'Povos', value: 'Zora · Goron · Rito · Gerudo' },
       { label: 'Propósito', value: 'Purificação e Aliança' },
     ],
@@ -127,9 +139,9 @@ export const CHAPTERS = [
       'Das ruínas nasce um novo amanhecer: uma Hyrule pronta para ser reconstruída, livre da sombra que a aprisionou por um século.',
     atmosphere: 'destiny',
     media: {
-      src: destiny960,
-      srcSet: `${destiny960} 960w, ${destiny1920} 1920w`,
-      alt: 'Link empunhando a Espada Mestra no confronto final contra Calamidade Ganon no Castelo de Hyrule',
+      src: destiny800,
+      srcSet: `${destiny800} 800w, ${destiny1600} 1600w`,
+      alt: 'Ilustração original de raios dourados de sol iluminando uma espada cerimonial em ruínas floridas ao amanhecer',
     },
     meta: [
       { label: 'Lâmina', value: 'Espada Mestra' },

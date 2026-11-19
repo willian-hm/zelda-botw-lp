@@ -31,8 +31,15 @@
 
 .site-footer__note {
   font-size: var(--fs-xs);
-  color: rgba(233, 228, 213, 0.64);
-  line-height: 1.6;
+  color: rgba(233, 228, 213, 0.78);
+  line-height: 1.65;
+  margin-bottom: 0.45rem;
+}
+
+.site-footer__legal {
+  font-size: 0.72rem;
+  color: rgba(233, 228, 213, 0.54);
+  line-height: 1.55;
 }
 
 .site-footer__progress {

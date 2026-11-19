@@ -2,7 +2,7 @@ import { KOROKS } from '../data/koroks'
 import { scrollToTarget } from '../lib/gsap'
 import { setState, toast, useStore } from '../lib/store'
 import KorokSecret from '../components/KorokSecret'
-import { ArrowIcon, TriforceIcon } from '../components/Icons'
+import { ArrowIcon, CompassStarIcon } from '../components/Icons'
 import './Footer.css'
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
 
   const resetProgress = () => {
     setState({ koroks: [], recipes: [] })
-    toast('Progresso de Koroks e receitas reiniciado.', { tone: 'sheikah' })
+    toast('Progresso de descobertas reiniciado.', { tone: 'sheikah' })
   }
 
   return (
@@ -20,12 +20,15 @@ export default function Footer() {
       <div className="container site-footer__inner">
         <div className="site-footer__brand">
           <span className="site-footer__crest" aria-hidden="true">
-            <TriforceIcon size={28} />
+            <CompassStarIcon size={28} />
           </span>
           <div>
             <p className="display site-footer__title">HYRULE — The Wild Awaits</p>
             <p className="site-footer__note">
-              Projeto conceitual interativo inspirado em The Legend of Zelda: Breath of the Wild. Todos os personagens, universos e marcas pertencem à Nintendo.
+              <strong>Projeto conceitual de portfólio, independente e sem fins lucrativos</strong>, sem afiliação, patrocínio ou endosso da Nintendo. Todas as ilustrações, animações, simulações físicas, tipografia (licença SIL OFL) e trilha sonora procedural em Web Audio são criações originais produzidas para estudo de design e engenharia front-end.
+            </p>
+            <p className="site-footer__legal">
+              Nomes, personagens e conceitos do universo <em>The Legend of Zelda: Breath of the Wild</em> são marcas e propriedades intelectuais da Nintendo Co., Ltd., referenciados apenas em caráter editorial de tributo não comercial.
             </p>
           </div>
         </div>

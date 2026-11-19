@@ -1,9 +1,13 @@
-import scene1 from '../assets/media/scene1-800.webp'
-import scene2 from '../assets/media/scene2-800.webp'
-import scene3 from '../assets/media/scene3-800.webp'
-import scene4 from '../assets/media/scene4-800.webp'
-import scene5 from '../assets/media/scene5-800.webp'
-import scene6 from '../assets/media/scene6-800.webp'
+import meadow from '../assets/media/vista-meadow-800.webp'
+import ruins from '../assets/media/vista-ruins-800.webp'
+import heroVista from '../assets/media/hero-poster.jpg'
+import awakening from '../assets/media/ch-awakening-800.webp'
+import calamity from '../assets/media/ch-calamity-800.webp'
+import destiny from '../assets/media/ch-destiny-800.webp'
+import water from '../assets/media/beast-water-640.webp'
+import fire from '../assets/media/beast-fire-640.webp'
+import wind from '../assets/media/beast-wind-640.webp'
+import desert from '../assets/media/beast-lightning-640.webp'
 
 export const BIOMES = [
   { id: 'all', label: 'Todas as Regiões' },
@@ -30,7 +34,7 @@ export const REGIONS = [
     summary: 'O berço do reino e ponto de partida da jornada. Um planalto elevado cercado por muralhas naturais e ruínas antigas.',
     landmarks: ['Santuário da Ressurreição', 'Templo do Tempo', 'Monte Hylia'],
     note: 'Aqui Link obtém as quatro runas iniciais da Pedra Sheikah e o Paraglider.',
-    image: scene3,
+    image: heroVista,
   },
   {
     id: 'central',
@@ -42,7 +46,7 @@ export const REGIONS = [
     summary: 'Vastas campinas dominadas pela silhueta sombria do Castelo de Hyrule e patrulhadas por Guardiões corrompidos.',
     landmarks: ['Castelo de Hyrule', 'Ruínas da Cidade Real', 'Coliseu Antigo'],
     note: 'Epicentro da Grande Calamidade — onde a luz de Zelda resiste há cem anos.',
-    image: scene1,
+    image: calamity,
   },
   {
     id: 'dueling-peaks',
@@ -54,7 +58,7 @@ export const REGIONS = [
     summary: 'Uma montanha monumental partida ao meio que serve de portal natural rumo à vila Sheikah de Kakariko.',
     landmarks: ['Vila Kakariko', 'Desfiladeiro dos Picos Gêmeos', 'Fonte da Grande Fada'],
     note: 'Refúgio preservado do clã Sheikah, lar da anciã Impa.',
-    image: scene2,
+    image: meadow,
   },
   {
     id: 'hateno',
@@ -66,7 +70,7 @@ export const REGIONS = [
     summary: 'Colinas pastoris, falésias à beira-mar e o último grande povoado Hyliano intacto após a Calamidade.',
     landmarks: ['Vila Hateno', 'Laboratório Ancestral de Hateno', 'Monte Lanayru'],
     note: 'A pesquisadora Purah aprimora as runas da Pedra Sheikah em seu laboratório no alto da colina.',
-    image: scene5,
+    image: ruins,
   },
   {
     id: 'lanayru',
@@ -78,7 +82,7 @@ export const REGIONS = [
     summary: 'Terras esculpidas por águas cristalinas, pontes prateadas e chuvas incessantes ao redor do Domínio Zora.',
     landmarks: ['Domínio Zora', 'Reservatório Oriental', 'Pântano de Lanayru'],
     note: 'Lar da Princesa Mipha e território da Besta Divina Vah Ruta.',
-    image: scene4,
+    image: water,
   },
   {
     id: 'eldin',
@@ -90,7 +94,7 @@ export const REGIONS = [
     summary: 'Encostas de basalto negro, rios de magma e fontes termais à sombra imponente da Montanha da Morte.',
     landmarks: ['Montanha da Morte', 'Cidade Goron', 'Mina Meridional'],
     note: 'Território do povo Goron e da Besta Divina Vah Rudania. Requer proteção contra chamas.',
-    image: scene3,
+    image: fire,
   },
   {
     id: 'akkala',
@@ -102,7 +106,7 @@ export const REGIONS = [
     summary: 'Planícies tingidas de dourado e carmesim de outono, coroadas pela fortaleza arruinada da Cidadela de Akkala.',
     landmarks: ['Cidadela de Akkala', 'Vila Tarrey', 'Laboratório de Robbie'],
     note: 'Onde a tecnologia ancestral ganha vida em forjas dedicadas a combater os Guardiões.',
-    image: scene2,
+    image: destiny,
   },
   {
     id: 'woodland',
@@ -114,7 +118,7 @@ export const REGIONS = [
     summary: 'Matas ancestrais envoltas por névoa labiríntica que guia apenas quem observa a direção do vento.',
     landmarks: ['Bosque Korok', 'Grande Árvore Deku', 'Pedestal da Espada Mestra'],
     note: 'No coração das Florestas Perdidas repousa a Espada que Sela a Escuridão.',
-    image: scene6,
+    image: ruins,
   },
   {
     id: 'hebra',
@@ -126,7 +130,7 @@ export const REGIONS = [
     summary: 'Cordilheira gélida no extremo noroeste, marcada por ventos cortantes, fontes termais ocultas e descidas de escudo.',
     landmarks: ['Pico de Hebra', 'Cabana de Selmie', 'Esqueleto Leviatã do Norte'],
     note: 'Um teste silencioso de resistência térmica e orientação sob tempestades de neve.',
-    image: scene4,
+    image: wind,
   },
   {
     id: 'tabantha',
@@ -138,7 +142,7 @@ export const REGIONS = [
     summary: 'Tundra aberta cortada por um abismo colossal, guardando a ilha rochosa onde ergue-se a Vila Rito.',
     landmarks: ['Vila Rito', 'Grande Ponte de Tabantha', 'Lago Totori'],
     note: 'Céu dominado pela Besta Divina Vah Medoh e pelos guerreiros alados do clã Rito.',
-    image: scene3,
+    image: wind,
   },
   {
     id: 'ridge',
@@ -150,7 +154,7 @@ export const REGIONS = [
     summary: 'Planaltos esmeralda repletos de cogumelos gigantes, tempestades elétricas e antigas plataformas cerimoniais.',
     landmarks: ['Planalto do Trovão', 'Monte Satori', 'Estábulo de Serenne'],
     note: 'Quando uma luz esverdeada brilha no cume do Monte Satori, o Senhor da Montanha aparece.',
-    image: scene1,
+    image: meadow,
   },
   {
     id: 'gerudo-highlands',
@@ -162,7 +166,7 @@ export const REGIONS = [
     summary: 'Cânions nevados que separam os bosques centrais do mar de areia, ocultando o esconderijo do Clã Yiga.',
     landmarks: ['Esconderijo Yiga', 'Estátua da Oitava Heroína', 'Vale da Neve'],
     note: 'Contraste dramático entre neve no topo e dunas ardentes logo abaixo dos penhascos.',
-    image: scene4,
+    image: awakening,
   },
   {
     id: 'wasteland',
@@ -174,7 +178,7 @@ export const REGIONS = [
     summary: 'Oceano infinito de dunas douradas, tempestades de areia e oásis que abrigam a vibrante Cidade Gerudo.',
     landmarks: ['Cidade Gerudo', 'Bazar Kara Kara', 'Labirinto do Deserto'],
     note: 'Domínio da Campeã Urbosa e da Besta Divina Vah Naboris. As morsas-da-areia permitem deslizar pelas dunas.',
-    image: scene5,
+    image: desert,
   },
   {
     id: 'lake',
@@ -186,7 +190,7 @@ export const REGIONS = [
     summary: 'Um imenso espelho d’água atravessado pela Ponte de Hylia, onde o dragão Farosh surge sob a luz da madrugada.',
     landmarks: ['Ponte de Hylia', 'Ilha da Fonte', 'Estábulo das Terras Altas'],
     note: 'As águas do lago refletem o céu aberto e ligam o centro de Hyrule às selvas tropicais do sul.',
-    image: scene1,
+    image: water,
   },
   {
     id: 'faron',
@@ -198,6 +202,6 @@ export const REGIONS = [
     summary: 'Florestas tropicais exuberantes, cachoeiras monumentais, ruínas Zonai esquecidas e a tranquila Vila Lurelin.',
     landmarks: ['Vila Lurelin', 'Cachoeiras de Floria', 'Fonte da Coragem'],
     note: 'Abundante em bananas vigorosas e frutas raras — paraíso natural no extremo sul do reino.',
-    image: scene6,
+    image: ruins,
   },
 ]

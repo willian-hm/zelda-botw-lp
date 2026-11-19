@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import logoSrc from '../assets/media/logo-480.webp'
 import { KOROKS } from '../data/koroks'
 import { scrollToTarget } from '../lib/gsap'
 import { audio } from '../lib/audio'
 import { setState, toast, useStore } from '../lib/store'
-import { KorokLeafIcon, MusicIcon, SfxIcon } from './Icons'
+import { BrandEmblem, KorokLeafIcon, MusicIcon, SfxIcon } from './Icons'
 import './Navbar.css'
 
 const NAV_ITEMS = [
@@ -122,7 +121,11 @@ export default function Navbar() {
             }}
             aria-label="Voltar ao início — Hyrule Experience"
           >
-            <img src={logoSrc} alt="The Legend of Zelda: Breath of the Wild" width="96" height="75" />
+            <BrandEmblem size={34} className="brand__emblem" />
+            <span className="brand__word">
+              <strong className="display">HYRULE</strong>
+              <small>The Wild Awaits</small>
+            </span>
           </a>
 
           <nav className="desktop-nav" aria-label="Navegação principal">

@@ -1,17 +1,3 @@
-import stasisMp4 from '../assets/media/rune-stasis.mp4'
-import stasisPoster from '../assets/media/rune-stasis.jpg'
-import magnesisMp4 from '../assets/media/rune-magnesis.mp4'
-import magnesisPoster from '../assets/media/rune-magnesis.jpg'
-import cryonisMp4 from '../assets/media/rune-cryonis.mp4'
-import cryonisPoster from '../assets/media/rune-cryonis.jpg'
-import bombMp4 from '../assets/media/rune-bomb.mp4'
-import bombPoster from '../assets/media/rune-bomb.jpg'
-import cameraImg from '../assets/media/rune-camera-736.webp'
-import amiiboMp4 from '../assets/media/rune-amiibo.mp4'
-import amiiboPoster from '../assets/media/rune-amiibo.jpg'
-import motoMp4 from '../assets/media/rune-moto.mp4'
-import motoPoster from '../assets/media/rune-moto.jpg'
-
 export const LAB_RUNES = [
   {
     id: 'stasis',
@@ -21,8 +7,11 @@ export const LAB_RUNES = [
     summary:
       'Interrompe o fluxo do tempo em um objeto. Enquanto congelado, cada impacto acumula energia cinética — liberada de uma só vez quando a runa expira.',
     controls: 'Clique/toque na esfera (ou Espaço) para congelar · Clique ou pressione Enter várias vezes para carregar impacto.',
-    video: stasisMp4,
-    poster: stasisPoster,
+    specs: [
+      { label: 'Princípio', value: 'Bloqueio inercial temporário' },
+      { label: 'Acúmulo', value: 'Vetor cinético até 6 impactos' },
+      { label: 'Duração', value: '4,5 segundos por ciclo' },
+    ],
   },
   {
     id: 'magnesis',
@@ -30,10 +19,13 @@ export const LAB_RUNES = [
     jpTag: 'CAMPO MAGNÉTICO',
     accent: '#E04D6B',
     summary:
-      'Manipula objetos metálicos à distância por meio de um feixe eletromagnético Sheikah — ideal para atravessar abismos, mover baús e acionar mecanismos.',
+      'Manipula objetos metálicos à distância por meio de um feixe eletromagnético ancestral — ideal para atravessar abismos, mover baús e acionar mecanismos.',
     controls: 'Arraste o bloco metálico com mouse/toque (ou use as setas) até encaixá-lo no pedestal azul para ativar o selo.',
-    video: magnesisMp4,
-    poster: magnesisPoster,
+    specs: [
+      { label: 'Alvo', value: 'Ligas ferrosas e blocos metálicos' },
+      { label: 'Controle', value: 'Arraste livre ou setas do teclado' },
+      { label: 'Objetivo', value: 'Ativar o pedestal de pressão' },
+    ],
   },
   {
     id: 'cryonis',
@@ -42,9 +34,12 @@ export const LAB_RUNES = [
     accent: '#7CE4FF',
     summary:
       'Ergue pilares sólidos de gelo instantaneamente sobre superfícies aquáticas. Permite criar pontes, abrir passagem ou elevar estruturas submersas.',
-    controls: 'Clique/toque na água (ou setas + Espaço) para erguer até 3 pilares · Clique em um pilar existente para estilhaçá-lo.',
-    video: cryonisMp4,
-    poster: cryonisPoster,
+    controls: 'Clique/toque na água (ou botão Erguer Pilar) para criar até 3 pilares · Clique em um pilar existente para estilhaçá-lo.',
+    specs: [
+      { label: 'Superfície', value: 'Qualquer corpo d’água navegável' },
+      { label: 'Limite', value: 'Até 3 pilares simultâneos' },
+      { label: 'Bônus', value: 'Ergue o baú flutuante sobre o pilar' },
+    ],
   },
   {
     id: 'bombs',
@@ -54,39 +49,43 @@ export const LAB_RUNES = [
     summary:
       'Materializa cargas de energia ancestral em formato esférico (rola em declives) ou cúbico (permanece imóvel), detonadas à distância quando desejar.',
     controls: 'Escolha Esférica ou Cúbica · Clique na arena para lançar (ou Espaço) · Detone com o botão ou tecla D.',
-    video: bombMp4,
-    poster: bombPoster,
+    specs: [
+      { label: 'Esférica', value: 'Rola em declives por gravidade' },
+      { label: 'Cúbica', value: 'Fixação estável em rampas' },
+      { label: 'Impacto', value: 'Onda radial de 165 u. sobre blocos' },
+    ],
   },
 ]
 
 export const EXTRA_RUNES = [
   {
     id: 'camera',
-    name: 'Câmera Sheikah',
+    name: 'Câmera Ancestral',
     tag: 'Registro de Campo',
+    accent: '#49C5CE',
+    actionLabel: 'Testar Disparo',
+    feedback: 'Registro salvo no Compêndio de Campo!',
     description:
-      'Cataloga criaturas, armas, materiais e monstros no Compêndio de Hyrule, além de registrar paisagens das memórias perdidas.',
-    image: cameraImg,
-    alt: 'Link utilizando a runa Câmera da Pedra Sheikah',
+      'Cataloga flora, fauna, relíquias e cenários históricos de Hyrule, auxiliando na reconstrução das memórias perdidas.',
   },
   {
-    id: 'amiibo',
-    name: 'Amiibo',
-    tag: 'Invocação Especial',
+    id: 'relic',
+    name: 'Invocação Rúnica',
+    tag: 'Sinal de Ressonância',
+    accent: '#C8A96B',
+    actionLabel: 'Emitir Pulso',
+    feedback: 'Sinal ressonante emitido na câmara!',
     description:
-      'Permite invocar suprimentos, baús misteriosos e equipamentos lendários inspirados em outras eras da saga Zelda.',
-    video: amiiboMp4,
-    poster: amiiboPoster,
-    alt: 'Demonstração da runa Amiibo invocando suprimentos em Hyrule',
+      'Módulo cerimonial capaz de materializar suprimentos raros e ecos antigos de eras passadas por meio de ressonância rúnica.',
   },
   {
-    id: 'moto',
-    name: 'Master Cycle Zero',
-    tag: 'Relíquia da DLC',
+    id: 'cycle',
+    name: 'Relíquia Veloz',
+    tag: 'Propulsão Ancestral',
+    accent: '#7CE4FF',
+    actionLabel: 'Acelerar Núcleo',
+    feedback: 'Núcleo ancestral em potência máxima!',
     description:
-      'A Besta Divina pessoal do herói: uma relíquia mecânica movida a materiais ancestrais para cruzar planícies e trilhas em alta velocidade.',
-    video: motoMp4,
-    poster: motoPoster,
-    alt: 'Link pilotando a Master Cycle Zero pelas planícies de Hyrule',
+      'Mecanismo pessoal de deslocamento movido a energia ancestral para cruzar planícies, colinas e trilhas em alta velocidade.',
   },
 ]

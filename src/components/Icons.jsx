@@ -1,21 +1,42 @@
-export function SheikahEyeIcon({ size = 24, className = '' }) {
+export function BrandEmblem({ size = 28, className = '' }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
-      <path d="M24 6v7M14 9l4 6M34 9l-4 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M6 25c4.5-7 11-10.5 18-10.5S37.5 18 42 25c-4.5 7-11 10.5-18 10.5S10.5 32 6 25Z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
-      <circle cx="24" cy="25" r="5.5" stroke="currentColor" strokeWidth="2.2" />
-      <circle cx="24" cy="25" r="2" fill="currentColor" />
-      <path d="M24 35.5v4.5M24 44c1.6-1.4 2.4-2.5 2.4-3.7a2.4 2.4 0 0 0-4.8 0c0 1.2.8 2.3 2.4 3.7Z" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" className={className} aria-hidden="true">
+      <rect x="2" y="2" width="36" height="36" rx="9" stroke="currentColor" strokeOpacity="0.38" strokeWidth="1.4" />
+      <path
+        d="M20 7L23.6 16.4L33 20L23.6 23.6L20 33L16.4 23.6L7 20L16.4 16.4L20 7Z"
+        fill="currentColor"
+        fillOpacity="0.16"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <circle cx="20" cy="20" r="3" fill="#49C5CE" />
     </svg>
   )
 }
 
-export function TriforceIcon({ size = 20, className = '' }) {
+export function SheikahEyeIcon({ size = 24, className = '' }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 36 32" fill="none" className={className} aria-hidden="true">
-      <polygon points="18,2 25,14 11,14" fill="currentColor" />
-      <polygon points="11,16 18,28 4,28" fill="currentColor" />
-      <polygon points="25,16 32,28 18,28" fill="currentColor" />
+    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className} aria-hidden="true">
+      <polygon points="24,6 42,24 24,42 6,24" stroke="currentColor" strokeWidth="2.1" strokeLinejoin="round" />
+      <polygon points="24,13 35,24 24,35 13,24" stroke="currentColor" strokeOpacity="0.55" strokeWidth="1.5" strokeLinejoin="round" />
+      <circle cx="24" cy="24" r="3.4" fill="currentColor" />
+    </svg>
+  )
+}
+
+export function CompassStarIcon({ size = 22, className = '' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 36 36" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M18 3L21.5 14.5L33 18L21.5 21.5L18 33L14.5 21.5L3 18L14.5 14.5L18 3Z"
+        fill="currentColor"
+        fillOpacity="0.22"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <circle cx="18" cy="18" r="2.8" fill="currentColor" />
     </svg>
   )
 }

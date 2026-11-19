@@ -9,10 +9,10 @@
 .lab__bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.14;
-  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(circle at 22% 24%, rgba(73, 197, 206, 0.14), transparent 46%),
+    radial-gradient(circle at 80% 72%, rgba(200, 169, 107, 0.1), transparent 48%),
+    repeating-radial-gradient(circle at 50% 45%, rgba(73, 197, 206, 0.06) 0 1px, transparent 1px 44px);
   pointer-events: none;
 }
 
@@ -159,9 +159,55 @@
   color: rgba(233, 228, 213, 0.82);
 }
 
-.slate-clip-toggle {
+.slate-specs {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: var(--sp-3);
+  border-top: 1px solid rgba(233, 228, 213, 0.1);
+}
+
+.slate-specs > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: var(--fs-xs);
+}
+
+.slate-specs dt {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--rune-accent);
+}
+
+.slate-specs dd {
+  color: rgba(233, 228, 213, 0.85);
+  text-align: right;
+}
+
+.extra-rune-card__blueprint {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--extra-accent, #49C5CE) 14%, transparent), #061013 75%);
+  border-bottom: 1px solid rgba(73, 197, 206, 0.16);
+}
+
+.blueprint-svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 320ms var(--ease-out), filter 320ms ease;
+}
+
+.blueprint-svg.is-triggered {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 14px rgba(73, 197, 206, 0.8));
+}
+
+.extra-rune-card__btn {
+  margin-top: 0.5rem;
   justify-self: start;
-  --accent: var(--rune-accent);
+  --accent: var(--extra-accent, var(--c-sheikah));
 }
 
 /* Canvas simulator */

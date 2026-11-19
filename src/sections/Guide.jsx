@@ -405,10 +405,10 @@ export default function Guide() {
         {/* Complementary On-Demand YouTube Video Facade */}
         <div className="guide-video">
           <div className="guide-video__copy">
-            <p className="eyebrow">Conteúdo Complementar</p>
-            <h3 className="display">Guia em Vídeo de Hyrule</h3>
+            <p className="eyebrow">Conteúdo Externo · YouTube</p>
+            <h3 className="display">Guia em Vídeo no YouTube</h3>
             <p>
-              Carregado apenas sob demanda para manter a navegação leve. Clique para assistir ao resumo visual de exploração e sobrevivência.
+              Embed externo carregado apenas sob demanda ao clicar — nenhum vídeo de terceiros é hospedado neste repositório.
             </p>
           </div>
 
