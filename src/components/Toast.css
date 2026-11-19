@@ -1,0 +1,96 @@
+.hyrule-toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  width: min(92vw, 420px);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(14, 24, 25, 0.96);
+  border: 1px solid rgba(73, 197, 206, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 24px rgba(73, 197, 206, 0.16);
+  color: var(--c-parchment);
+  backdrop-filter: blur(12px);
+  animation: toastIn 320ms var(--ease-out);
+}
+
+@media (min-width: 760px) {
+  .hyrule-toast {
+    left: auto;
+    right: 1.5rem;
+    transform: none;
+    animation: toastInRight 320ms var(--ease-out);
+  }
+}
+
+@keyframes toastInRight {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hyrule-toast--gold {
+  border-color: rgba(200, 169, 107, 0.65);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 24px rgba(200, 169, 107, 0.22);
+}
+
+.hyrule-toast__icon {
+  color: var(--c-sheikah);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+
+.hyrule-toast--gold .hyrule-toast__icon {
+  color: var(--c-gold-bright);
+}
+
+.hyrule-toast__body {
+  flex: 1;
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+}
+
+.hyrule-toast__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  letter-spacing: 0.04em;
+  color: var(--c-gold-bright);
+  margin-bottom: 0.1rem;
+}
+
+.hyrule-toast__close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: rgba(233, 228, 213, 0.6);
+  transition: color var(--dur-1), background-color var(--dur-1);
+}
+
+.hyrule-toast__close:hover {
+  color: var(--c-parchment);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

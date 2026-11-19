@@ -1,0 +1,499 @@
+.story {
+  position: relative;
+  color: var(--c-parchment);
+  background: #0c1719;
+  transition: background-color 850ms ease;
+  isolation: isolate;
+}
+
+.story--mood-despertar {
+  --story-accent: var(--c-sheikah);
+  background: #0d1c20;
+}
+
+.story--mood-calamidade {
+  --story-accent: var(--c-malice);
+  background: #14060a;
+}
+
+.story--mood-campeoes {
+  --story-accent: var(--c-gold);
+  background: #101b21;
+}
+
+.story--mood-destino {
+  --story-accent: var(--c-gold-bright);
+  background: #191711;
+}
+
+.story__backdrop {
+  position: sticky;
+  top: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.story__intro {
+  padding-top: var(--sp-9);
+  padding-bottom: var(--sp-6);
+}
+
+.story__intro .section-head {
+  margin-bottom: 0;
+}
+
+/* Sticky chapter direct navigator */
+.chapter-rail {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 30;
+  background: #0b1416;
+  border-top: 1px solid rgba(233, 228, 213, 0.08);
+  border-bottom: 1px solid rgba(233, 228, 213, 0.14);
+}
+
+.chapter-rail__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: 0.7rem;
+}
+
+.chapter-rail__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.chapter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(233, 228, 213, 0.12);
+  color: rgba(233, 228, 213, 0.72);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color var(--dur-2), color var(--dur-2), background-color var(--dur-2);
+}
+
+.chapter-pill:hover {
+  color: var(--c-parchment);
+  border-color: rgba(233, 228, 213, 0.35);
+}
+
+.chapter-pill.is-active {
+  background: color-mix(in srgb, var(--story-accent, var(--c-sheikah)) 18%, transparent);
+  border-color: var(--story-accent, var(--c-sheikah));
+  color: var(--c-parchment-3);
+}
+
+.chapter-pill__num {
+  font-family: var(--font-display);
+  color: var(--story-accent, var(--c-sheikah));
+  font-size: 0.9rem;
+}
+
+/* Individual chapters */
+.story-chapter {
+  position: relative;
+  padding-block: clamp(4.5rem, 8vw, 8.5rem);
+  overflow-x: clip;
+  border-bottom: 1px solid rgba(233, 228, 213, 0.06);
+}
+
+.story-chapter--awakening {
+  background:
+    radial-gradient(ellipse 60% 45% at 80% 15%, rgba(73, 197, 206, 0.14), transparent 70%),
+    radial-gradient(ellipse 50% 45% at 15% 85%, rgba(116, 142, 105, 0.14), transparent 70%);
+}
+
+.story-chapter--calamity {
+  --accent: var(--c-malice);
+  background:
+    radial-gradient(ellipse 75% 55% at 55% 45%, rgba(179, 18, 61, 0.32), transparent 72%),
+    linear-gradient(180deg, rgba(20, 6, 10, 0.35), rgba(14, 4, 8, 0.96) 30%, rgba(20, 6, 10, 0.95) 85%, rgba(16, 27, 33, 0.45) 100%);
+}
+
+.story-chapter--champions {
+  --accent: var(--c-gold);
+  background:
+    radial-gradient(ellipse 65% 50% at 20% 25%, rgba(73, 197, 206, 0.1), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 85% 80%, rgba(200, 169, 107, 0.12), transparent 70%);
+}
+
+.story-chapter--destiny {
+  --accent: var(--c-gold-bright);
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 20%, rgba(230, 207, 152, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(25, 23, 17, 0.4) 0%, rgba(25, 23, 17, 0.92) 60%, var(--c-night) 100%);
+}
+
+.calamity-veil,
+.destiny-rays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.calamity-veil__tendrils {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      -18deg,
+      rgba(214, 34, 74, 0.05) 0px,
+      rgba(214, 34, 74, 0.05) 2px,
+      transparent 2px,
+      transparent 46px
+    );
+  mask-image: radial-gradient(ellipse at 65% 45%, black 10%, transparent 75%);
+}
+
+.story-chapter__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--sp-7);
+  align-items: start;
+}
+
+.story-chapter__copy {
+  position: relative;
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.story-chapter__ghost-num {
+  position: absolute;
+  top: -0.32em;
+  left: -0.06em;
+  font-size: clamp(6rem, 12vw, 11rem);
+  line-height: 0.8;
+  color: color-mix(in srgb, var(--accent) 12%, transparent);
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+.story-chapter__title {
+  font-size: clamp(2.2rem, 1.4rem + 3.2vw, 4.2rem);
+  color: var(--c-parchment-3);
+}
+
+.story-chapter__quote {
+  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.55rem);
+  line-height: 1.4;
+  color: var(--accent);
+  border-left: 2px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  padding-left: var(--sp-4);
+}
+
+.story-chapter__body {
+  font-size: var(--fs-md);
+  line-height: 1.65;
+  color: rgba(233, 228, 213, 0.9);
+  max-width: 56ch;
+}
+
+.story-chapter__detail {
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  color: rgba(233, 228, 213, 0.68);
+  max-width: 54ch;
+}
+
+.story-chapter__meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-4);
+  padding-top: var(--sp-4);
+  margin-top: var(--sp-2);
+  border-top: 1px solid rgba(233, 228, 213, 0.14);
+}
+
+.story-chapter__meta dt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+
+.story-chapter__meta dd {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-parchment);
+}
+
+.story-chapter__korok {
+  margin-top: var(--sp-2);
+}
+
+/* Visual frames */
+.story-chapter__visual {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.story-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(233, 228, 213, 0.14);
+  background: #081012;
+  box-shadow: var(--shadow-deep);
+  aspect-ratio: 16 / 9;
+}
+
+.story-frame--malice {
+  border-color: rgba(214, 34, 74, 0.45);
+  box-shadow: 0 30px 90px -20px rgba(214, 34, 74, 0.35), 0 0 0 1px rgba(214, 34, 74, 0.15);
+}
+
+.story-frame--wide21 {
+  aspect-ratio: 2 / 1;
+}
+
+.story-frame--champions .story-chapter__media-img {
+  object-fit: fill;
+}
+
+.story-chapter__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.story-frame__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1.25rem 0.95rem;
+  background: linear-gradient(180deg, transparent, rgba(7, 13, 14, 0.88) 78%);
+  font-size: var(--fs-xs);
+  color: rgba(233, 228, 213, 0.85);
+}
+
+.story-frame__num {
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Awakening secondary clip inset */
+.story-inset {
+  position: relative;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: 0.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(12, 26, 30, 0.72);
+  border: 1px solid rgba(73, 197, 206, 0.25);
+}
+
+.story-inset video,
+.story-inset img {
+  width: 160px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.story-inset__label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-sheikah);
+}
+
+/* Chapter III Divine Beasts pixel-locked interactive overlay & selector */
+.beasts-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+}
+
+.beasts-overlay__slice {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.65rem 0.35rem;
+  background: rgba(6, 12, 16, 0.48);
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  transition: background-color 320ms var(--ease-out), box-shadow 320ms ease;
+}
+
+.beasts-overlay__slice:last-child {
+  border-right: 0;
+}
+
+.beasts-overlay__slice:hover {
+  background: rgba(6, 12, 16, 0.2);
+}
+
+.beasts-overlay__slice.is-focused {
+  background: transparent;
+  box-shadow:
+    inset 0 0 0 2px var(--beast-color),
+    inset 0 -58px 54px -22px color-mix(in srgb, var(--beast-color) 65%, transparent);
+}
+
+.beasts-overlay__tag {
+  font-family: var(--font-display);
+  font-size: clamp(0.68rem, 0.55rem + 0.4vw, 0.92rem);
+  letter-spacing: 0.04em;
+  color: rgba(244, 241, 232, 0.72);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  transition: color var(--dur-2), transform var(--dur-2);
+}
+
+.beasts-overlay__slice.is-focused .beasts-overlay__tag {
+  color: var(--c-parchment-3);
+  transform: translateY(-2px);
+}
+
+.beast-spotlight {
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--beast-color) 10%, rgba(12, 22, 27, 0.78));
+  border-left: 3px solid var(--beast-color);
+  display: grid;
+  gap: 0.25rem;
+}
+
+.beast-spotlight__badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--beast-color);
+}
+
+.beast-spotlight p {
+  font-size: var(--fs-sm);
+  color: rgba(233, 228, 213, 0.88);
+  line-height: 1.5;
+}
+
+.beasts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.beast-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(233, 228, 213, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color var(--dur-2), background-color var(--dur-2), transform var(--dur-2);
+}
+
+.beast-chip:hover,
+.beast-chip.is-active {
+  border-color: var(--beast-color);
+  background: color-mix(in srgb, var(--beast-color) 14%, rgba(16, 27, 33, 0.7));
+  transform: translateY(-2px);
+}
+
+.beast-chip__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--beast-color);
+  box-shadow: 0 0 12px var(--beast-color);
+  flex-shrink: 0;
+}
+
+.beast-chip__main {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.beast-chip__main strong {
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  color: var(--c-parchment-3);
+}
+
+.beast-chip__main small {
+  font-size: 0.75rem;
+  color: rgba(233, 228, 213, 0.68);
+}
+
+.beast-chip__el {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--beast-color);
+}
+
+@media (min-width: 960px) {
+  .story-chapter__grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.18fr);
+    gap: clamp(2.5rem, 5vw, 5.5rem);
+  }
+
+  /* Alternate visual composition rhythm on Chapter II (Calamity) */
+  .story-chapter--calamity .story-chapter__visual {
+    order: -1;
+  }
+
+  .story-chapter__copy {
+    position: sticky;
+    top: calc(var(--header-h) + 84px);
+  }
+
+  .story-chapter__grid--wide {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.28fr);
+  }
+
+  .beasts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .story-chapter__meta {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .story-inset {
+    grid-template-columns: 1fr;
+  }
+
+  .story-inset video,
+  .story-inset img {
+    width: 100%;
+  }
+
+  .beasts-grid {
+    grid-template-columns: 1fr;
+  }
+}

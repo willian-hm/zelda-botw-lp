@@ -1,0 +1,330 @@
+.hmap {
+  padding-block: var(--sp-9);
+  background:
+    radial-gradient(ellipse 65% 45% at 12% 14%, rgba(73, 197, 206, 0.12), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 88% 85%, rgba(200, 169, 107, 0.2), transparent 70%),
+    var(--c-parchment);
+  color: var(--c-ink);
+}
+
+.hmap__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-4);
+}
+
+.hmap__head .section-head {
+  margin-bottom: var(--sp-5);
+}
+
+.hmap__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+}
+
+.biome-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.biome-pill {
+  padding: 0.48rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(27, 36, 34, 0.18);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--c-ink-soft);
+  transition: background-color var(--dur-2), color var(--dur-2), border-color var(--dur-2);
+}
+
+.biome-pill:hover {
+  color: var(--c-ink);
+  border-color: var(--c-ink);
+}
+
+.biome-pill.is-active {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+  color: var(--c-parchment-3);
+}
+
+/* Map + Dossier layout */
+.hmap__layout {
+  display: grid;
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+.hmap__board {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.hyrule-svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(27, 36, 34, 0.2);
+  box-shadow: 0 28px 70px -30px rgba(16, 27, 27, 0.35);
+  background: #b7c9ca;
+}
+
+.map-region {
+  cursor: pointer;
+  transition: opacity var(--dur-2) ease, filter var(--dur-2) ease;
+}
+
+.map-region:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.map-region path {
+  transition: fill var(--dur-2) ease, stroke var(--dur-2) ease, filter var(--dur-2) ease;
+}
+
+.map-region:hover path,
+.map-region:focus-visible path {
+  filter: brightness(1.1);
+  stroke: #101b1b;
+  stroke-width: 2.6;
+}
+
+.map-region.is-selected path {
+  filter: brightness(1.14) saturate(1.12);
+}
+
+.map-region.is-dimmed,
+.map-pin.is-dimmed {
+  opacity: 0.32;
+}
+
+.map-pin__label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 800;
+  fill: #101b1b;
+  paint-order: stroke;
+  stroke: rgba(244, 241, 232, 0.9);
+  stroke-width: 3.2px;
+  stroke-linejoin: round;
+}
+
+.map-pin.is-selected .map-pin__label {
+  font-size: 13px;
+  fill: #0b2429;
+}
+
+.map-pin__pulse {
+  fill: rgba(73, 197, 206, 0.2);
+  stroke-width: 2;
+  animation: mapPulse 2.2s ease-out infinite;
+}
+
+@keyframes mapPulse {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+.hmap__disclaimer {
+  font-size: 0.74rem;
+  color: var(--c-ink-soft);
+}
+
+/* Dossier Card */
+.region-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--c-parchment-3);
+  border: 1px solid rgba(27, 36, 34, 0.14);
+  box-shadow: 0 24px 60px -30px rgba(16, 27, 27, 0.32);
+}
+
+.region-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.region-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.region-card__climate {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 27, 27, 0.82);
+  color: var(--c-parchment-3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.region-card__body {
+  padding: var(--sp-5);
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.region-card__title {
+  font-size: clamp(1.65rem, 1.3rem + 1vw, 2.3rem);
+  color: var(--c-ink);
+}
+
+.region-card__summary {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-soft);
+  line-height: 1.6;
+}
+
+.region-card__pois {
+  padding-top: var(--sp-3);
+  border-top: 1px solid rgba(27, 36, 34, 0.12);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.region-card__pois span {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-sheikah-deep);
+}
+
+.region-card__pois ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.region-card__pois li {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-sm);
+  background: rgba(116, 142, 105, 0.14);
+  color: var(--c-ink);
+}
+
+.region-card__note {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-soft);
+  font-style: italic;
+  border-left: 2px solid var(--c-gold-deep);
+  padding-left: 0.75rem;
+}
+
+.region-card__actions {
+  margin-top: 0.35rem;
+}
+
+.region-card__actions .btn--solid {
+  --accent: var(--c-ink);
+  color: var(--c-parchment-3);
+}
+
+/* Quick list */
+.hmap__quick-list {
+  margin-top: var(--sp-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.quick-region-btn {
+  padding: 0.36rem 0.78rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(27, 36, 34, 0.14);
+  background: rgba(255, 255, 255, 0.35);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  transition: background-color var(--dur-1), color var(--dur-1), border-color var(--dur-1);
+}
+
+.quick-region-btn:hover,
+.quick-region-btn.is-active {
+  background: var(--c-sheikah-deep);
+  border-color: var(--c-sheikah-deep);
+  color: var(--c-parchment-3);
+}
+
+/* Optional external ZeldaMaps banner */
+.hmap__external {
+  margin-top: var(--sp-7);
+  padding: var(--sp-5);
+  border-radius: var(--radius-md);
+  background: rgba(27, 36, 34, 0.06);
+  border: 1px solid rgba(27, 36, 34, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.hmap__external h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.hmap__external p {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-soft);
+  max-width: 56ch;
+}
+
+.hmap__external-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hmap__external-btns .btn--solid {
+  --accent: var(--c-ink);
+  color: var(--c-parchment-3);
+}
+
+.external-map-frame {
+  margin-top: var(--sp-4);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.external-map-frame iframe {
+  width: 100%;
+  height: clamp(380px, 60vh, 560px);
+  border: 1px solid rgba(27, 36, 34, 0.2);
+  border-radius: var(--radius-md);
+  background: var(--c-night);
+}
+
+.external-map-frame__hint {
+  font-size: var(--fs-xs);
+  color: var(--c-ink-soft);
+}
+
+@media (min-width: 980px) {
+  .hmap__layout {
+    grid-template-columns: minmax(0, 1.38fr) minmax(0, 0.82fr);
+    gap: var(--sp-6);
+  }
+}

@@ -1,0 +1,155 @@
+/* =========================================================================
+   HYRULE — Design tokens
+   Every colour, size, spacing, effect and motion value used by the
+   experience lives here. Components consume tokens, never raw values.
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Hylia Serif';
+  src: url('../assets/fonts/hylia-serif.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 400;
+}
+
+:root {
+  /* ---- Core palette ---------------------------------------------------- */
+  --c-night: #101b1b;
+  --c-night-2: #0a1212;
+  --c-night-3: #172625;
+  --c-parchment: #e9e4d5;
+  --c-parchment-2: #ddd6c2;
+  --c-parchment-3: #f4f1e8;
+  --c-sheikah: #49c5ce;
+  --c-sheikah-deep: #1e7d86;
+  --c-sheikah-glow: rgba(73, 197, 206, 0.55);
+  --c-gold: #c8a96b;
+  --c-gold-bright: #e6cf98;
+  --c-gold-deep: #8f7440;
+  --c-hyrule: #748e69;
+  --c-hyrule-deep: #3f5638;
+  --c-sky: #a9c8d6;
+  --c-ink: #1b2422;          /* body text on light surfaces */
+  --c-ink-soft: #4a5550;
+
+  /* ---- Contextual palettes -------------------------------------------- */
+  --c-malice: #d6224a;
+  --c-malice-deep: #5c0a1f;
+  --c-malice-glow: rgba(214, 34, 74, 0.6);
+  --c-guardian: #f28a2e;     /* corrupted guardian orange */
+  --c-fire: #ff7a2f;
+  --c-ice: #9fe3ff;
+  --c-water: #2f8fd8;
+  --c-electric: #ffe36b;
+  --c-wind: #b9f0d9;
+
+  --c-link: #3d7ab8;
+  --c-zelda: #e9c46a;
+  --c-mipha: #d8465c;
+  --c-revali: #4a6fd1;
+  --c-daruk: #c4622d;
+  --c-urbosa: #c9a227;
+  --c-ganon: #b3123d;
+
+  /* ---- Semantic (themable per section via [data-theme]) -------------- */
+  --bg: var(--c-night);
+  --fg: var(--c-parchment);
+  --fg-soft: rgba(233, 228, 213, 0.72);
+  --fg-faint: rgba(233, 228, 213, 0.38);
+  --accent: var(--c-sheikah);
+  --line: rgba(233, 228, 213, 0.16);
+  --surface: rgba(233, 228, 213, 0.04);
+
+  /* ---- Typography ----------------------------------------------------- */
+  --font-display: 'Hylia Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* fluid type scale (min @360px → max @1600px) */
+  --fs-xs: clamp(0.72rem, 0.69rem + 0.12vw, 0.8rem);
+  --fs-sm: clamp(0.84rem, 0.8rem + 0.16vw, 0.94rem);
+  --fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
+  --fs-md: clamp(1.15rem, 1.06rem + 0.4vw, 1.4rem);
+  --fs-lg: clamp(1.45rem, 1.25rem + 0.9vw, 2.1rem);
+  --fs-xl: clamp(2rem, 1.6rem + 1.9vw, 3.4rem);
+  --fs-2xl: clamp(2.6rem, 1.8rem + 3.6vw, 5.6rem);
+  --fs-3xl: clamp(3.4rem, 2rem + 6.4vw, 9.5rem);
+  --fs-mega: clamp(4.2rem, 1.6rem + 11vw, 15rem);
+
+  --lh-tight: 1.02;
+  --lh-snug: 1.2;
+  --lh-body: 1.65;
+  --tracking-wide: 0.18em;
+  --tracking-mega: 0.32em;
+
+  /* ---- Spacing (4px base, fluid at the top end) ----------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  --sp-8: clamp(3rem, 2rem + 4vw, 6rem);
+  --sp-9: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --sp-10: clamp(6rem, 4rem + 9vw, 13rem);
+
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 4rem);
+  --max-w: 1440px;
+  --max-w-text: 62ch;
+  --header-h: 72px;
+
+  /* ---- Shape & effects -------------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 20px 60px -20px rgba(5, 12, 12, 0.45);
+  --shadow-deep: 0 40px 120px -30px rgba(0, 0, 0, 0.7);
+  --glow-sheikah: 0 0 24px rgba(73, 197, 206, 0.45), 0 0 2px rgba(73, 197, 206, 0.9);
+  --glow-gold: 0 0 30px rgba(200, 169, 107, 0.4);
+  --glow-malice: 0 0 40px rgba(214, 34, 74, 0.55);
+  --grain-opacity: 0.06;
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out: arrivals */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);    /* scene changes */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* playful pops */
+  --dur-1: 140ms;
+  --dur-2: 280ms;
+  --dur-3: 520ms;
+  --dur-4: 900ms;
+  --dur-5: 1400ms;
+
+  /* ---- Layers ------------------------------------------------------------- */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-toast: 300;
+  --z-cursor: 400;
+
+  color-scheme: dark;
+}
+
+/* Section themes -------------------------------------------------------- */
+[data-theme='light'] {
+  --bg: var(--c-parchment);
+  --fg: var(--c-ink);
+  --fg-soft: rgba(27, 36, 34, 0.74);
+  --fg-faint: rgba(27, 36, 34, 0.42);
+  --accent: var(--c-sheikah-deep);
+  --line: rgba(27, 36, 34, 0.14);
+  --surface: rgba(27, 36, 34, 0.04);
+}
+
+[data-theme='dark'] {
+  --bg: var(--c-night);
+  --fg: var(--c-parchment);
+}
+
+[data-theme='malice'] {
+  --bg: #12070a;
+  --fg: var(--c-parchment);
+  --accent: var(--c-malice);
+}

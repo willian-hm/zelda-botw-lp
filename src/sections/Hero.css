@@ -1,0 +1,381 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: grid;
+  align-items: stretch;
+  overflow: hidden;
+  background: #233339;
+  color: var(--c-parchment);
+  isolation: isolate;
+}
+
+.hero__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero__layer {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  will-change: transform;
+}
+
+.hero__layer--sky {
+  z-index: 1;
+}
+
+.hero__layer--land {
+  z-index: 3;
+}
+
+/* Entrance video sits cleanly ABOVE the static land cutout so the full clip shines */
+.hero__layer--video {
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.hero__layer--video.is-ready {
+  opacity: 1;
+}
+
+.hero__img,
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 54%;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  filter: brightness(0.84) contrast(1.04) saturate(1.06);
+}
+
+.hero__sun {
+  position: absolute;
+  z-index: 1;
+  top: -12%;
+  right: 2%;
+  width: min(70vw, 760px);
+  height: min(70vw, 760px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 240, 192, 0.42) 0%,
+    rgba(232, 192, 118, 0.16) 38%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Monumental title layered BETWEEN the sky & mountains in parallax mode,
+   and floating cleanly above the video scrim in video entrance mode */
+.hero__depth-wrap {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 0;
+  top: clamp(12.5%, 14.2vh, 16.5%);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hero.is-video-mode .hero__depth-wrap {
+  z-index: 5;
+}
+
+.hero__depth-word {
+  font-size: clamp(3.8rem, 12.6vw, 12.4rem);
+  line-height: 0.88;
+  letter-spacing: 0.12em;
+  color: rgba(255, 250, 236, 0.94);
+  text-shadow:
+    0 12px 48px rgba(10, 20, 26, 0.58),
+    0 0 80px rgba(255, 234, 178, 0.28);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background:
+    linear-gradient(180deg, rgba(11, 20, 24, 0.62) 0%, rgba(11, 20, 24, 0.14) 28%, rgba(11, 20, 24, 0.12) 56%, rgba(12, 22, 23, 0.9) 92%, #0c1719 100%);
+  pointer-events: none;
+}
+
+.hero__particles {
+  z-index: 6;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: calc(var(--header-h) + var(--sp-2));
+  padding-bottom: clamp(2.4rem, 5vh, 4.2rem);
+  min-height: 100svh;
+}
+
+.hero__top-copy {
+  text-align: center;
+}
+
+.hero__eyebrow {
+  color: rgba(255, 247, 226, 0.92);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.hero__eyebrow::before {
+  background: var(--c-gold-bright);
+}
+
+.hero__bottom-copy {
+  display: grid;
+  gap: var(--sp-5);
+  max-width: 44rem;
+}
+
+.hero__tagline {
+  display: grid;
+  gap: 0.45rem;
+  font-size: clamp(0.98rem, 0.9rem + 0.35vw, 1.18rem);
+  line-height: 1.55;
+  color: rgba(244, 241, 232, 0.9);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+
+.hero__wild {
+  font-size: clamp(1.7rem, 1.3rem + 1.5vw, 2.55rem);
+  line-height: 1.1;
+  color: var(--c-gold-bright);
+  letter-spacing: 0.02em;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Premium signature CTA */
+.btn-adventure {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 54px;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(230, 207, 152, 0.75);
+  color: var(--c-parchment-3);
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  overflow: hidden;
+  background: rgba(14, 26, 28, 0.62);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(73, 197, 206, 0.2);
+  transition: transform var(--dur-2) var(--ease-out), border-color var(--dur-2), box-shadow var(--dur-3), color var(--dur-2);
+}
+
+.btn-adventure__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--c-gold) 0%, var(--c-sheikah) 100%);
+  transform: translateY(102%);
+  transition: transform 420ms var(--ease-out);
+  z-index: -1;
+}
+
+.btn-adventure__ring {
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.btn-adventure__icon {
+  color: var(--c-sheikah);
+  transition: color var(--dur-2), transform var(--dur-3) var(--ease-out);
+}
+
+.btn-adventure:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-sheikah);
+  color: var(--c-night);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.45), 0 0 28px rgba(73, 197, 206, 0.45);
+}
+
+.btn-adventure:hover .btn-adventure__bg {
+  transform: translateY(0);
+}
+
+.btn-adventure:hover .btn-adventure__icon {
+  color: var(--c-night);
+  transform: rotate(15deg) scale(1.08);
+}
+
+.btn-adventure:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.hero__sound-btn {
+  background: rgba(16, 27, 27, 0.52);
+  backdrop-filter: blur(8px);
+  border-color: rgba(233, 228, 213, 0.34);
+  color: var(--c-parchment);
+}
+
+.hero__sound-btn:hover {
+  border-color: var(--c-gold-bright);
+  color: var(--c-gold-bright);
+}
+
+.hero__cinema-btn {
+  color: rgba(233, 228, 213, 0.72);
+}
+
+.hero__cinema-btn.is-active {
+  color: var(--c-sheikah);
+  border-color: rgba(73, 197, 206, 0.45);
+}
+
+.hero__korok {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  z-index: 7;
+}
+
+.hero__scroll-cue {
+  display: none;
+}
+
+/* Brief immersive Sheikah veil on "Iniciar Aventura" */
+.hero__veil {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, rgba(73, 197, 206, 0.34) 0%, rgba(12, 23, 25, 0.94) 68%);
+  color: var(--c-sheikah);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 380ms var(--ease-out);
+}
+
+.hero__veil.is-active {
+  opacity: 1;
+}
+
+.hero__veil svg {
+  filter: drop-shadow(0 0 24px var(--c-sheikah));
+  transform: scale(0.82);
+  transition: transform 520ms var(--ease-out);
+}
+
+.hero__veil.is-active svg {
+  transform: scale(1.18);
+}
+
+@media (min-width: 900px) {
+  .hero__content {
+    padding-bottom: clamp(4.9rem, 8.8vh, 6.2rem);
+  }
+
+  .hero__bottom-copy {
+    grid-template-columns: 1.05fr auto;
+    align-items: end;
+    max-width: none;
+    gap: var(--sp-7);
+  }
+
+  .hero__actions {
+    justify-content: flex-end;
+  }
+
+  .hero__scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 0.85rem;
+    transform: translateX(-50%);
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(233, 228, 213, 0.64);
+    pointer-events: none;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 22px;
+    background: linear-gradient(180deg, var(--c-gold-bright), transparent);
+    animation: scrollPulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    gap: 0.45em;
+  }
+
+  .hero__eyebrow::before {
+    width: 1.4em;
+  }
+
+  .hero__depth-wrap {
+    top: 16%;
+  }
+
+  .hero__depth-word {
+    font-size: clamp(3.3rem, 15.2vw, 4.8rem);
+    letter-spacing: 0.08em;
+  }
+
+  .hero__img {
+    object-position: 50% 58%;
+  }
+
+  .btn-adventure,
+  .hero__sound-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
